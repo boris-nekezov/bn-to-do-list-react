@@ -11,3 +11,6 @@ ReactDOM.render(
 
 // font-awesome inlcuded in index.html
 // https://fontawesome.com/v4.7.0/icons/
+
+// theme reference
+// https://bootswatch.com/slate/
