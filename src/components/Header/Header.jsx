@@ -4,10 +4,11 @@ import HeaderTitle from './HeaderTitle/HeaderTitle';
 
 export default class Header extends Component {
   render() {
+    const { handlePost } = this.props;
     return (
       <div>
         <HeaderTitle title="BN To Do List" />
-        <HeaderTaskAdd />
+        <HeaderTaskAdd handlePost={handlePost} />
       </div>
     );
   }

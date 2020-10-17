@@ -5,19 +5,22 @@ import Input from '../../UI/Input/Input'
 
 export default class HeaderTaskAdd extends Component {
   render() {
+    const { handlePost } = this.props;
     return (
-      <div className="input-group mb-2">
-        <div className="input-group-prepend">
-          <Button modifiers="success">
-            <Icon iconName="plus" modifiers="mr-2"/>
-            Add new task
-          </Button>
+      <form autoComplete="off" onSubmit={handlePost}>
+        <div className="input-group mb-2">
+          <div className="input-group-prepend">
+            <Button modifiers="success" type="submit">
+              <Icon iconName="plus" modifiers="mr-2"/>
+              Add new task
+            </Button>
+          </div>
+          <Input 
+            type="text" 
+            placeholder="Please enter task title!" 
+            />
         </div>
-        <Input 
-          type="text" 
-          placeholder="Please enter task title!" 
-        />
-      </div>
+      </form>
     );
   };
 }
