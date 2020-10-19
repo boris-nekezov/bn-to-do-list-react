@@ -5,7 +5,7 @@ import Input from '../../UI/Input/Input'
 
 export default class HeaderTaskAdd extends Component {
   render() {
-    const { handlePost } = this.props;
+    const { title, handleChange, handlePost } = this.props;
     return (
       <form autoComplete="off" onSubmit={handlePost}>
         <div className="input-group mb-2">
@@ -17,8 +17,12 @@ export default class HeaderTaskAdd extends Component {
           </div>
           <Input 
             type="text" 
-            placeholder="Please enter task title!" 
-            />
+            placeholder="Please enter task title!"
+            value={title} 
+            handleChange={handleChange}
+            name="title"
+            autofocus
+            />  
         </div>
       </form>
     );

@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import Button from '../../UI/Button/Button'
 import Checkbox from '../../UI/Checkbox/Checkbox'
 import Icon from '../../UI/Icon/Icon'
-import Input from '../../UI/Input/Input'
+// import Input from '../../UI/Input/Input'
 import ToDoListItemTitle from './ToDoListItemTitle/ToDoListItemTitle'
 
 export default class ToDoListItem extends Component {

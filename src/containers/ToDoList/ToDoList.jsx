@@ -11,6 +11,9 @@ class ToDoList extends Component {
   }
 
   componentDidMount() {
+    console.log(`[componentDidMount]`);
+    // console.log(`instance`);
+    // console.log(instance);
     // instance.get("/data.json").then((response) => {
     //   // put the data into array
     //   const fetchedData = [];
@@ -24,7 +27,15 @@ class ToDoList extends Component {
     // })
   }
 
+  handleChange = event => {
+    console.log(`[handleChange]`);
+    this.setState({
+      [event.currentTarget.name]: event.currentTarget.value
+    });
+  }
+
   handlePost = event => {
+    console.log(`[handlePost]`);
     event.preventDefault();
     // add the data we want to post
     const Data = {
@@ -33,27 +44,29 @@ class ToDoList extends Component {
     };
 
     // push this data to the back-end (post($endpoint) is available in axios)
-    instance.post('todos.json', Data).then((response) => {
+    instance.post("/data.json", Data).then((response) => {
       console.log(response);
-      const todos = [
-        ...this.state.todos,
-        { ...Data, id: response.data.title }
-      ];
-      this.setState({
-        title: "",
-        todos: todos
-      })
-      console.log('successfull post request!')
+      // const todos = [
+      //   ...this.state.todos,
+      //   { ...Data, id: response.data.title }
+      // ];
+      // this.setState({
+      //   title: "",
+      //   todos: todos
+      // })
+      // console.log('successfull post request!')
 
-      //  TUK SUM TODO MAKE PROJECT IN FIREBASE!
     });
   }
 
   render() {
-    const { handlePost } = this.state;
+    const { title } = this.state;
     return (
       <div>
-        <Header handlePost={handlePost} />
+        <Header 
+          title={title}
+          handleChange={this.handleChange} 
+          handlePost={this.handlePost} />
         <ToDoListItems />
       </div>
     );
