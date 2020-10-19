@@ -56,6 +56,8 @@
     - ToDoListItems.js
     - [`ToDoListItem`]
       - ToDoListItem.js
+      - [`ToDoListItemTitle`]
+        - ToDoListItemTitle.js
   - [`UI`]
     - [`Button`]
       - Button.js
@@ -69,4 +71,12 @@
   - [`ToDoList`]
     - ToDoList.js
 
-    
+## 6. project versions to do:
+
+1. ### make it with functional components
+2. ### make it with context api
+3. ### make it redux
+4. ### make it with material ui
+5. ### learn how to do sign in sign up form
+6. ### learn react router
+7. ### make version with sign up/in and router
