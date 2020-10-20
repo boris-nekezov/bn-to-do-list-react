@@ -7,17 +7,21 @@ import ToDoListItemTitle from './ToDoListItemTitle/ToDoListItemTitle'
 
 export default class ToDoListItem extends Component {
   render() {
+    const { todo } = this.props;
+    // console.log('todo', todo);
     return (
       <div className="jumbotron mb-2 py-3 px-3">
         <div className="row">
-          <h1>ToDoListItem</h1>
-
           <div className="col-1 align-items-center">
-            <Checkbox />
-            
+            <Checkbox 
+              id={todo.id}
+              completed={todo.completed} />
           </div>
           
-          <ToDoListItemTitle />
+          <ToDoListItemTitle 
+            id={todo.id}
+            title={todo.title}
+          />
 
           <div className="col-2 align-items-center">
             <Button modifiers="warning">
@@ -29,9 +33,7 @@ export default class ToDoListItem extends Component {
               Delete
             </Button>
           </div>
-       
         </div>
-  
       </div>
     )
   }

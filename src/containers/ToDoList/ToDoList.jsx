@@ -26,7 +26,7 @@ class ToDoList extends Component {
       // console.log('fetchedData', fetchedData);
       // set the state of todos to be fetchedData
       this.setState({
-        results: fetchedData
+        todos: fetchedData
       })
     })
   }
@@ -44,7 +44,7 @@ class ToDoList extends Component {
     // add the data we want to post
     const Data = {
       title: this.state.title,
-      complete: this.state.completed
+      completed: this.state.completed
     };
 
     // push this data to the back-end (post($endpoint) is available in axios)
@@ -65,14 +65,15 @@ class ToDoList extends Component {
   }
 
   render() {
-    const { title } = this.state;
+    const { title, todos } = this.state;
     return (
       <div>
         <Header 
           title={title}
           handleChange={this.handleChange} 
           handlePost={this.handlePost} />
-        <ToDoListItems />
+        <ToDoListItems 
+          todos={todos} />
       </div>
     );
   }

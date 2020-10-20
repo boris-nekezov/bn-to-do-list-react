@@ -4,6 +4,7 @@ export default class Input extends Component {
   render() {
     const { 
       type, 
+      id,
       placeholder,
       value, 
       modifier,
@@ -13,7 +14,8 @@ export default class Input extends Component {
     } = this.props;
     return (
       <input 
-        type={type} 
+        type={type}
+        id={id} 
         placeholder={placeholder}
         value={value}
         className={`form-control ${modifier}`}
