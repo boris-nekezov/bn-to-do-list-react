@@ -3,10 +3,18 @@ import ToDoListItem from './ToDoListItem/ToDoListItem'
 
 export default class ToDoListItems extends Component {
   render() {
+    const {
+      todos
+    } = this.props;
+    // console.log('todos', todos);
     return (
       <div className="alert alert-success">
-        <h1>ToDoListItems</h1>
-        <ToDoListItem />
+        {todos.map((todo) => 
+          <ToDoListItem 
+            todo={todo}
+            key={todo.id} />
+        )}
+
       </div>
     )
   }

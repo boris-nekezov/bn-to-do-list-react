@@ -3,13 +3,15 @@ import './Checkbox.css'
 
 export default class Checkbox extends Component {
   render() {
+    const { id, completed } = this.props;
     return (
       <div className="col-1 align-items-center">
       <input
-        id="1"
+        id={`ch${id}`}
         type="checkbox"
+        defaultChecked={completed}
       />
-      <label htmlFor="1"></label>
+      <label htmlFor={`ch${id}`}></label>
       </div>
     )
   }
