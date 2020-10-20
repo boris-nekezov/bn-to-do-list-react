@@ -7,7 +7,7 @@ import ToDoListItemTitle from './ToDoListItemTitle/ToDoListItemTitle'
 
 export default class ToDoListItem extends Component {
   render() {
-    const { todo } = this.props;
+    const { todo, handleRemove } = this.props;
     // console.log('todo', todo);
     return (
       <div className="jumbotron mb-2 py-3 px-3">
@@ -28,7 +28,7 @@ export default class ToDoListItem extends Component {
               <Icon iconName="pencil" modifiers="mr-2" />
               Edit
             </Button>
-            <Button modifiers="danger">
+            <Button modifiers="danger" clicked={() => handleRemove(todo.id)}>
               <Icon iconName="trash-o" modifiers="mr-2" />
               Delete
             </Button>

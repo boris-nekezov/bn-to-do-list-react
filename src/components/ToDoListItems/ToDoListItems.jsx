@@ -4,7 +4,8 @@ import ToDoListItem from './ToDoListItem/ToDoListItem'
 export default class ToDoListItems extends Component {
   render() {
     const {
-      todos
+      todos,
+      handleRemove,
     } = this.props;
     // console.log('todos', todos);
     return (
@@ -12,7 +13,8 @@ export default class ToDoListItems extends Component {
         {todos.map((todo) => 
           <ToDoListItem 
             todo={todo}
-            key={todo.id} />
+            key={todo.id} 
+            handleRemove={handleRemove}/>
         )}
 
       </div>

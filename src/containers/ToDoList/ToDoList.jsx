@@ -64,6 +64,18 @@ class ToDoList extends Component {
     });
   }
 
+  handleRemove = id => {
+    // console.log('delete', id);
+    // here we delete only the item in the db in firebase
+    instance.delete(`/todos/${id}.json`).then((response) => {
+      // console.log('response', response);
+    });
+    // now we have to delete it from the state as well
+    this.setState({
+      todos: this.state.todos.filter(todo => todo.id !== id)
+    });
+  }
+
   render() {
     const { title, todos } = this.state;
     return (
@@ -73,7 +85,8 @@ class ToDoList extends Component {
           handleChange={this.handleChange} 
           handlePost={this.handlePost} />
         <ToDoListItems 
-          todos={todos} />
+          todos={todos} 
+          handleRemove={this.handleRemove} />
       </div>
     );
   }
