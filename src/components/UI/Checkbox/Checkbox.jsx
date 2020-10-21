@@ -11,7 +11,7 @@ export default class Checkbox extends Component {
         type="checkbox"
         defaultChecked={completed}
       />
-      <label htmlFor={`ch${id}`}></label>
+      <label htmlFor={`ch${id}`} className="checkbox-label"></label>
       </div>
     )
   }

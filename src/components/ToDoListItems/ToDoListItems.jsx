@@ -6,6 +6,10 @@ export default class ToDoListItems extends Component {
     const {
       todos,
       handleRemove,
+      handleUpdateTitle,
+      handleChange,
+      title,
+      handleCurrentTitle
     } = this.props;
     // console.log('todos', todos);
     return (
@@ -14,7 +18,12 @@ export default class ToDoListItems extends Component {
           <ToDoListItem 
             todo={todo}
             key={todo.id} 
-            handleRemove={handleRemove}/>
+            title={title}
+            handleRemove={handleRemove}
+            handleUpdateTitle={handleUpdateTitle} 
+            handleChange={handleChange}
+            handleCurrentTitle={handleCurrentTitle}
+          />
         )}
 
       </div>

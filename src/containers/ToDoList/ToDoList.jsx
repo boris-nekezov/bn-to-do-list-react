@@ -5,6 +5,7 @@ import instance from '../../firebase/instance';
 
 class ToDoList extends Component {
   state = {
+    titleAdd: "",
     title: "",
     completed: false,
     todos: []
@@ -38,12 +39,19 @@ class ToDoList extends Component {
     });
   }
 
+  // set current title of a task in the input value of the task
+  handleCurrentTitle = titleCurrent => {
+    this.setState({
+      title: titleCurrent
+    })
+  }
+
   handlePost = event => {
     // console.log(`[handlePost]`);
     event.preventDefault();
     // add the data we want to post
     const Data = {
-      title: this.state.title,
+      title: this.state.titleAdd,
       completed: this.state.completed
     };
 
@@ -56,10 +64,9 @@ class ToDoList extends Component {
         { ...Data, id: response.data.name }
       ];
       this.setState({
-        title: "",
+        titleAdd: "",
         todos: todos
       })
-      // console.log(this.state.todos);
       // console.log('successfull post request!')
     });
   }
@@ -76,17 +83,48 @@ class ToDoList extends Component {
     });
   }
 
+  handleUpdateTitle = (id) => {
+    const Data = {
+      title: this.state.title,
+      completed: this.state.completed
+    };
+    instance.put(`todos/${id}.json`, Data).then((response) => {
+      // console.log('response', response);
+      instance.get('todos.json').then((response) => {
+        const fetchedData = [];
+        for (let key in response.data) {
+          fetchedData.push({...response.data[key], id: key})
+        }
+        this.setState({
+          todos: fetchedData,
+          titleUpdate: '',
+          completed: false
+        })
+      });
+    });
+  }
+
   render() {
-    const { title, todos } = this.state;
+    const { 
+      titleAdd, 
+      title, 
+      todos 
+    } = this.state;
     return (
-      <div>
+      <div class="col-10">
         <Header 
           title={title}
+          titleAdd={titleAdd}
           handleChange={this.handleChange} 
           handlePost={this.handlePost} />
         <ToDoListItems 
           todos={todos} 
-          handleRemove={this.handleRemove} />
+          title={title}
+          handleRemove={this.handleRemove}
+          handleUpdateTitle={this.handleUpdateTitle} 
+          handleChange={this.handleChange} 
+          handleCurrentTitle={this.handleCurrentTitle}
+        />
       </div>
     );
   }
