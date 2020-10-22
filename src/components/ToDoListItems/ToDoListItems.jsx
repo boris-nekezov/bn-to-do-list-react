@@ -9,7 +9,8 @@ export default class ToDoListItems extends Component {
       handleUpdateTitle,
       handleChange,
       title,
-      handleCurrentTitle
+      handleCurrentTitle,
+      handleUpdateCheckbox
     } = this.props;
     // console.log('todos', todos);
     return (
@@ -23,6 +24,7 @@ export default class ToDoListItems extends Component {
             handleUpdateTitle={handleUpdateTitle} 
             handleChange={handleChange}
             handleCurrentTitle={handleCurrentTitle}
+            handleUpdateCheckbox={handleUpdateCheckbox}
           />
         )}
 

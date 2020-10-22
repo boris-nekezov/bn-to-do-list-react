@@ -24,7 +24,8 @@ export default class ToDoListItem extends Component {
       handleUpdateTitle, 
       handleChange,
       title,
-      handleCurrentTitle
+      handleCurrentTitle,
+      handleUpdateCheckbox
     } = this.props;
     // console.log('todo', todo);
     const isInEditMode = this.state.isInEditMode;
@@ -34,7 +35,10 @@ export default class ToDoListItem extends Component {
           <div className="col-1 align-items-center">
             <Checkbox 
               id={todo.id}
-              completed={todo.completed} />
+              title={todo.title}
+              completed={todo.completed} 
+              handleUpdateCheckbox={handleUpdateCheckbox}
+            />
           </div>
           
           <ToDoListItemTitle 

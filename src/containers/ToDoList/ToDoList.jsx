@@ -12,19 +12,13 @@ class ToDoList extends Component {
   }
 
   componentDidMount() {
-    // console.log(`[componentDidMount]`);
     instance.get("/todos.json").then((response) => {
-      // console.log(`response`);
-      // console.log(response);
+      // console.log('response', response);
       // put the data into array
       const fetchedData = [];
       for (let key in response.data) {
-        // console.log('key', key);
-        // console.log('...response.data[key]', {...response.data[key]});
-        // console.log(`===SEPARATOR==============================`);
         fetchedData.push({...response.data[key], id: key})
       }
-      // console.log('fetchedData', fetchedData);
       // set the state of todos to be fetchedData
       this.setState({
         todos: fetchedData
@@ -57,7 +51,7 @@ class ToDoList extends Component {
 
     // push this data to the back-end (post($endpoint) is available in axios)
     instance.post("/todos.json", Data).then((response) => {
-      // console.log(response);
+      // console.log('response', response);
       // response.data.name => -MK3VSi5XrApFPQ6oh1C => the key given from firebase
       const todos = [
         ...this.state.todos,
@@ -83,13 +77,15 @@ class ToDoList extends Component {
     });
   }
 
-  handleUpdateTitle = (id) => {
+  handleUpdateTitle = id => {
+    console.log(`before ${this.state.title}`)
     const Data = {
       title: this.state.title,
       completed: this.state.completed
     };
     instance.put(`todos/${id}.json`, Data).then((response) => {
-      // console.log('response', response);
+      console.log('response', response);
+      // update the title text in content after the change
       instance.get('todos.json').then((response) => {
         const fetchedData = [];
         for (let key in response.data) {
@@ -97,11 +93,23 @@ class ToDoList extends Component {
         }
         this.setState({
           todos: fetchedData,
-          titleUpdate: '',
+          title: '',
           completed: false
         })
       });
+   
     });
+    console.log(`after ${this.state.title}`)
+  }
+
+  handleUpdateCheckbox = (id, titleFromTodo, completedFromTodo) => {
+    const Data = {
+      title: titleFromTodo,
+      completed: !completedFromTodo
+    }
+    instance.put(`todos/${id}.json`, Data).then((response) => {
+      console.log('response', response);
+    })
   }
 
   render() {
@@ -124,6 +132,7 @@ class ToDoList extends Component {
           handleUpdateTitle={this.handleUpdateTitle} 
           handleChange={this.handleChange} 
           handleCurrentTitle={this.handleCurrentTitle}
+          handleUpdateCheckbox={this.handleUpdateCheckbox}
         />
       </div>
     );

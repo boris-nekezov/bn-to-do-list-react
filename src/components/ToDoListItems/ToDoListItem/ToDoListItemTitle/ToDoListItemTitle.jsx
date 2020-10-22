@@ -28,6 +28,7 @@ export default class ToDoListItemTitle extends Component {
                         value={title}
                         onChange={handleChange}
                         name="title"
+                        className="form-control"
                     />
                     :
                     <label 
