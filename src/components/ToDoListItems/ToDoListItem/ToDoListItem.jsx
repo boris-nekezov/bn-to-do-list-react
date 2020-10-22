@@ -45,6 +45,7 @@ export default class ToDoListItem extends Component {
             handleChange={handleChange}
             handleEditMode={this.handleEditMode}
             isInEditMode={isInEditMode}
+            handleCurrentTitle={handleCurrentTitle}
           />
 
           <div className="col-2 align-items-center">

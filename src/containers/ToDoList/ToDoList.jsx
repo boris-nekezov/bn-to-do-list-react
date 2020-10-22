@@ -111,7 +111,7 @@ class ToDoList extends Component {
       todos 
     } = this.state;
     return (
-      <div class="col-10">
+      <div className="col-10">
         <Header 
           title={title}
           titleAdd={titleAdd}

@@ -11,7 +11,8 @@ export default class ToDoListItemTitle extends Component {
       handleChange,
       label,
       handleEditMode,
-      isInEditMode
+      isInEditMode,
+      handleCurrentTitle
     } = this.props;
     return (
       <div className="col-9 align-items-center">
@@ -29,7 +30,11 @@ export default class ToDoListItemTitle extends Component {
                         name="title"
                     />
                     :
-                    <label htmlFor={`in${id}`} className="input-label">{label}</label>
+                    <label 
+                      htmlFor={`in${id}`} 
+                      className="input-label"
+                      onClick={() => {handleCurrentTitle(label); handleEditMode()} }
+                    >{label}</label>
                   }
                 </div>
               </div>
