@@ -15,7 +15,7 @@ class ToDoList extends Component {
   componentDidMount() {
     trackPromise(
       instance.get("/todos.json").then((response) => {
-        // console.log('response', response);
+        console.log('response', response);
         // put the data into array
         const fetchedData = [];
         for (let key in response.data) {
@@ -30,7 +30,7 @@ class ToDoList extends Component {
   }
 
   handleChange = event => {
-    // console.log(`[handleChange]`);
+    console.log(`[handleChange]`);
     this.setState({
       [event.currentTarget.name]: event.currentTarget.value
     });
@@ -38,13 +38,14 @@ class ToDoList extends Component {
 
   // set current title of a task in the input value of the task
   handleCurrentTitle = titleCurrent => {
+    console.log(`[handleCurrentTitle]`)
     this.setState({
       title: titleCurrent
     })
   }
 
   handlePost = event => {
-    // console.log(`[handlePost]`);
+    console.log(`[handlePost]`);
     event.preventDefault();
     // add the data we want to post
     const Data = {
@@ -55,7 +56,7 @@ class ToDoList extends Component {
     trackPromise(
       // push this data to the back-end (post($endpoint) is available in axios)
       instance.post("/todos.json", Data).then((response) => {
-        // console.log('response', response);
+        console.log('response', response);
         // response.data.name => -MK3VSi5XrApFPQ6oh1C => the key given from firebase
         const todos = [
           ...this.state.todos,
@@ -65,18 +66,18 @@ class ToDoList extends Component {
           titleAdd: "",
           todos: todos
         })
-        // console.log('successfull post request!')
       })
     );
 
   }
 
   handleRemove = id => {
+    console.log(`[handleRemove]`)
+    console.log('delete', id);
     trackPromise(
-      // console.log('delete', id);
       // here we delete only the item in the db in firebase
       instance.delete(`/todos/${id}.json`).then((response) => {
-        // console.log('response', response);
+        console.log('response', response);
       })
     );
     // now we have to delete it from the state as well
@@ -86,6 +87,7 @@ class ToDoList extends Component {
   }
 
   handleUpdateTitle = id => {
+    console.log(`[handleUpdateTitle]`)
     const Data = {
       title: this.state.title,
       completed: this.state.completed
@@ -93,7 +95,7 @@ class ToDoList extends Component {
 
     trackPromise(
       instance.put(`todos/${id}.json`, Data).then((response) => {
-        // console.log('response', response);
+        console.log('response', response);
         // update the title text in content after the change
         instance.get('todos.json').then((response) => {
           const fetchedData = [];
@@ -111,6 +113,7 @@ class ToDoList extends Component {
   }
 
   handleUpdateCheckbox = (id, titleFromTodo, completedFromTodo) => {
+    console.log(`[handleUpdateCheckbox]`);
     const Data = {
       title: titleFromTodo,
       completed: !completedFromTodo
@@ -131,7 +134,6 @@ class ToDoList extends Component {
     return (
       <div className="col-10">
         <Header 
-          title={title}
           titleAdd={titleAdd}
           handleChange={this.handleChange} 
           handlePost={this.handlePost} />

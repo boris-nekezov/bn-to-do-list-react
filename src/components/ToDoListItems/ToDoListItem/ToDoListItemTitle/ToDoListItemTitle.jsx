@@ -22,13 +22,12 @@ export default class ToDoListItemTitle extends Component {
               <div className="col">
                 <div className="form-group">
                   {isInEditMode ?
-                      <input 
-                        type="text"
-                        id={`in${id}`}
-                        value={title}
-                        onChange={handleChange}
-                        name="title"
-                        className="form-control"
+                    <Input 
+                      type="text"
+                      id={`in${id}`}
+                      value={title}
+                      handleChange={handleChange}
+                      name="title"
                     />
                     :
                     <label 
@@ -48,10 +47,18 @@ export default class ToDoListItemTitle extends Component {
                     role="group" 
                     aria-label="Basic example" 
                     className="btn-group btn-group-lg">                  
-                      <button 
-                        onClick={() => { handleUpdateTitle(id, title); handleEditMode(); }}
-                        modifiers="success">Save</button>
-                      <button modifiers="warning" onClick={() => handleEditMode()}>Cancel</button>
+                      <Button
+                        clicked={() => { handleUpdateTitle(id, title); handleEditMode(); }}
+                        modifiers="success"
+                      >
+                        Save
+                      </Button>
+                      <Button
+                        clicked={() => handleEditMode()}
+                        modifiers="warning" 
+                      >
+                        Cancel
+                      </Button>
                   </div>
                 </div>
               </div>
