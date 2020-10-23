@@ -3,7 +3,12 @@ import './Checkbox.css'
 
 export default class Checkbox extends Component {
   render() {
-    const { id, completed } = this.props;
+    const { 
+      id, 
+      title,
+      completed,  
+      handleUpdateCheckbox
+    } = this.props;
     return (
       <div className="col-1 align-items-center">
       <input
@@ -11,7 +16,11 @@ export default class Checkbox extends Component {
         type="checkbox"
         defaultChecked={completed}
       />
-      <label htmlFor={`ch${id}`}></label>
+      <label 
+        htmlFor={`ch${id}`} 
+        className="checkbox-label"
+        onClick={() => {handleUpdateCheckbox(id, title, completed);}}
+      ></label>
       </div>
     )
   }

@@ -4,7 +4,13 @@ import ToDoListItem from './ToDoListItem/ToDoListItem'
 export default class ToDoListItems extends Component {
   render() {
     const {
-      todos
+      todos,
+      handleRemove,
+      handleUpdateTitle,
+      handleChange,
+      title,
+      handleCurrentTitle,
+      handleUpdateCheckbox
     } = this.props;
     // console.log('todos', todos);
     return (
@@ -12,7 +18,14 @@ export default class ToDoListItems extends Component {
         {todos.map((todo) => 
           <ToDoListItem 
             todo={todo}
-            key={todo.id} />
+            key={todo.id} 
+            title={title}
+            handleRemove={handleRemove}
+            handleUpdateTitle={handleUpdateTitle} 
+            handleChange={handleChange}
+            handleCurrentTitle={handleCurrentTitle}
+            handleUpdateCheckbox={handleUpdateCheckbox}
+          />
         )}
 
       </div>

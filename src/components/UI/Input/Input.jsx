@@ -9,8 +9,7 @@ export default class Input extends Component {
       value, 
       modifier,
       handleChange, 
-      name, 
-      config 
+      name
     } = this.props;
     return (
       <input 
@@ -21,7 +20,6 @@ export default class Input extends Component {
         className={`form-control ${modifier}`}
         onChange={handleChange}
         name={name}
-        {...config}
       />
     )
   }
