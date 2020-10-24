@@ -28,3 +28,10 @@ input[type="checkbox"]:checked + label:before {
 input[type="checkbox"]:checked + label:before {
   letter-spacing: 5px;
 } /* allow space for check mark */
+
+/* /* // Extra small devices (portrait phones, less than 576px) */
+@media (max-width: 575.98px) { 
+  .checkbox-label {
+    font-size: 30px;
+  }
+}

@@ -32,7 +32,7 @@ export default class ToDoListItem extends Component {
     return (
       <div className="jumbotron mb-2 py-3 px-3">
         <div className="row">
-          <div className="col-1 align-items-center">
+          <div className="col-2 col-md-1 align-items-center">
             <Checkbox 
               id={todo.id}
               title={todo.title}
@@ -50,12 +50,13 @@ export default class ToDoListItem extends Component {
             handleEditMode={this.handleEditMode}
             isInEditMode={isInEditMode}
             handleCurrentTitle={handleCurrentTitle}
+            handleRemove={handleRemove}
           />
 
-          <div className="col-2 align-items-center">
+          <div className="col-12 col-md-3 col-lg-2 align-items-center">
             {isInEditMode ?
               <Button 
-                modifiers="danger" 
+                modifiers="danger d-none d-lg-block" 
                 clicked={() => handleRemove(todo.id)}
               >
                 <Icon iconName="trash-o" modifiers="mr-2" />
@@ -63,7 +64,7 @@ export default class ToDoListItem extends Component {
               </Button>
               :
               <Button 
-                modifiers="warning" 
+                modifiers="warning btn-block" 
                 clicked={() => {handleCurrentTitle(todo.title); this.handleEditMode()} }
               >
                 <Icon iconName="pencil" modifiers="mr-2" />

@@ -132,7 +132,7 @@ class ToDoList extends Component {
       todos 
     } = this.state;
     return (
-      <div className="col-10">
+      <div className="col-12 col-xl-10">
         <Header 
           titleAdd={titleAdd}
           handleChange={this.handleChange} 
