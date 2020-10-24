@@ -5,14 +5,14 @@ import Input from '../../UI/Input/Input'
 
 export default class HeaderTaskAdd extends Component {
   render() {
-    const { title, titleAdd, handleChange, handlePost } = this.props;
+    const { titleAdd, handleChange, handlePost } = this.props;
     return (
       <form autoComplete="off" onSubmit={handlePost}>
         <div className="input-group mb-2">
           <div className="input-group-prepend">
             <Button modifiers="success" type="submit">
-              <Icon iconName="plus" modifiers="mr-2"/>
-              Add new task
+              <Icon iconName="plus" modifiers="mr-sm-2"/>
+              <span className="d-none d-sm-inline">Add new task</span>
             </Button>
           </div>
           <Input 
@@ -22,7 +22,7 @@ export default class HeaderTaskAdd extends Component {
             handleChange={handleChange}
             name="titleAdd"
             autofocus
-            />  
+          />  
         </div>
       </form>
     );

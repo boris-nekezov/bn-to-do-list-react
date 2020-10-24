@@ -10,7 +10,7 @@ export default class Checkbox extends Component {
       handleUpdateCheckbox
     } = this.props;
     return (
-      <div className="col-1 align-items-center">
+      <div className="align-items-center">
       <input
         id={`ch${id}`}
         type="checkbox"
