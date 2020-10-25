@@ -65,7 +65,7 @@ export default class ToDoListItemTitle extends Component {
                         modifiers="danger d-lg-none" 
                         clicked={() => handleRemove(id)}
                       >
-                        <Icon iconName="trash-o" modifiers="mr-2" />
+                        <Icon iconName="trash-o" />
                       </Button>
                   </div>
                   <div 
