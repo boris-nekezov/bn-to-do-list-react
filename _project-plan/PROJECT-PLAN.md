@@ -74,8 +74,8 @@
 ## 6. project versions to do:
 
 1. ### make it with functional components
-2. ### make it with context api
-3. ### make it redux
+2. ### make it redux
+3. ### make it with context api
 4. ### make it with material ui
 5. ### learn how to do sign in sign up form
 6. ### learn react router
