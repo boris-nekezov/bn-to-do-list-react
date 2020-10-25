@@ -1,6 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
+// then in your entry point (index.ts or index.js)
+import "core-js/stable";
+import "regenerator-runtime/runtime";
 
 ReactDOM.render(
   <React.StrictMode>
