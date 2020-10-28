@@ -18,6 +18,7 @@
 - ToDoListItems
 - ToDoListItem
 - ToDoListItemTitle
+- ToDoListItemEditMode
 - Button
 - Icon
 - Input
@@ -36,8 +37,9 @@
     - `<ToDoListItem />`
       - `<Checkbox />`
       - `<ToDoListItemTitle />`
-        - `<Button />` (Save button)
-        - `<Button />` (Cancel button)
+        - `<ToDoListItemEditMode />`
+          - `<Button />` (Save button)
+          - `<Button />` (Cancel button)
       - `<Button />` (Edit button)
         - `<Icon />` (Edit icon)
       - `<Button />` (Delete button)
@@ -47,26 +49,28 @@
 
 - [`components`]
   - [`Header`]
-    - Header.js
+    - Header.jsx
     - [`HeaderTitle`]
-      - HeaderTitle.js
+      - HeaderTitle.jsx
     - [`HeaderTaskAdd`]
-      - HeaderTaskAdd.js
+      - HeaderTaskAdd.jsx
   - [`ToDoListItems`]
-    - ToDoListItems.js
+    - ToDoListItems.jsx
     - [`ToDoListItem`]
-      - ToDoListItem.js
+      - ToDoListItem.jsx
       - [`ToDoListItemTitle`]
-        - ToDoListItemTitle.js
+        - ToDoListItemTitle.jsx
+        - [`ToDoListItemEditMode`]
+          - ToDoListItemEditMode.jsx
   - [`UI`]
     - [`Button`]
-      - Button.js
+      - Button.jsx
     - [`Icon`]
-      - Icon.js
+      - Icon.jsx
     - [`Input`]
-      - Input.js
+      - Input.jsx
     - [`Checkbox`]
-      - Checkbox.js
+      - Checkbox.jsx
 - [`containers`]
   - [`ToDoList`]
-    - ToDoList.js
+    - ToDoList.jsx
