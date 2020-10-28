@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
-import Button from '../../../UI/Button/Button'
 import Input from '../../../UI/Input/Input'
-import Icon from '../../../UI/Icon/Icon'
+import ToDoListItemEditMode from './ToDoListItemEditMode/ToDoListItemEditMode';
 
 export default class ToDoListItemTitle extends Component {
   render() {
@@ -43,56 +42,13 @@ export default class ToDoListItemTitle extends Component {
             </div>
 
             {isInEditMode &&
-              <div className="row">
-                <div className="col mb-2">
-                  <div 
-                    role="group" 
-                    aria-label="Basic example" 
-                    className="btn-group btn-group-sm d-lg-none">                  
-                      <Button
-                        clicked={() => { handleUpdateTitle(id, title); handleEditMode(); }}
-                        modifiers="success"
-                      >
-                        Save
-                      </Button>
-                      <Button
-                        clicked={() => handleEditMode()}
-                        modifiers="warning" 
-                      >
-                        Cancel
-                      </Button>
-                      <Button 
-                        modifiers="danger d-lg-none" 
-                        clicked={() => handleRemove(id)}
-                      >
-                        <Icon iconName="trash-o" />
-                      </Button>
-                  </div>
-                  <div 
-                    role="group" 
-                    aria-label="Basic example" 
-                    className="btn-group btn-group-lg d-none d-lg-block">                  
-                      <Button
-                        clicked={() => { handleUpdateTitle(id, title); handleEditMode(); }}
-                        modifiers="success"
-                      >
-                        Save
-                      </Button>
-                      <Button
-                        clicked={() => handleEditMode()}
-                        modifiers="warning" 
-                      >
-                        Cancel
-                      </Button>
-                      <Button 
-                        modifiers="danger d-lg-none" 
-                        clicked={() => handleRemove(id)}
-                      >
-                        <Icon iconName="trash-o" modifiers="mr-2" />
-                      </Button>
-                  </div>
-                </div>
-              </div>
+              <ToDoListItemEditMode 
+                handleUpdateTitle={handleUpdateTitle}
+                id={id}
+                title={title}
+                handleEditMode={handleEditMode}
+                handleRemove={handleRemove}
+              />
             }      
           </div>
         </div>
