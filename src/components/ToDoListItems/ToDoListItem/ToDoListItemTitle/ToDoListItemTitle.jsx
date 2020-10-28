@@ -50,20 +50,20 @@ export default class ToDoListItemTitle extends Component {
                     aria-label="Basic example" 
                     className="btn-group btn-group-sm d-lg-none">                  
                       <Button
-                        clicked={() => { handleUpdateTitle(id, title); handleEditMode(); }}
-                        modifiers="success"
+                        kind="success"
+                        onClick={() => { handleUpdateTitle(id, title); handleEditMode(); }}
                       >
                         Save
                       </Button>
                       <Button
-                        clicked={() => handleEditMode()}
-                        modifiers="warning" 
+                        kind="warning" 
+                        onClick={() => handleEditMode()}
                       >
                         Cancel
                       </Button>
                       <Button 
-                        modifiers="danger d-lg-none" 
-                        clicked={() => handleRemove(id)}
+                        kind="danger d-lg-none" 
+                        onClick={() => handleRemove(id)}
                       >
                         <Icon iconName="trash-o" />
                       </Button>
@@ -73,20 +73,20 @@ export default class ToDoListItemTitle extends Component {
                     aria-label="Basic example" 
                     className="btn-group btn-group-lg d-none d-lg-block">                  
                       <Button
-                        clicked={() => { handleUpdateTitle(id, title); handleEditMode(); }}
-                        modifiers="success"
+                        kind="success"
+                        onClick={() => { handleUpdateTitle(id, title); handleEditMode(); }}
                       >
                         Save
                       </Button>
                       <Button
-                        clicked={() => handleEditMode()}
-                        modifiers="warning" 
+                        kind="warning" 
+                        onClick={() => handleEditMode()}
                       >
                         Cancel
                       </Button>
                       <Button 
-                        modifiers="danger d-lg-none" 
-                        clicked={() => handleRemove(id)}
+                        kind="danger d-lg-none" 
+                        onClick={() => handleRemove(id)}
                       >
                         <Icon iconName="trash-o" modifiers="mr-2" />
                       </Button>

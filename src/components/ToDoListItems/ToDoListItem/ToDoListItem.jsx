@@ -56,8 +56,8 @@ export default class ToDoListItem extends Component {
           <div className="col-12 col-lg-2 align-items-center">
             {isInEditMode ?
               <Button 
-                modifiers="danger d-none d-lg-block" 
-                clicked={() => handleRemove(todo.id)}
+                kind="danger d-none d-lg-block" 
+                onClick={() => handleRemove(todo.id)}
               >
                 <Icon iconName="trash-o" modifiers="mr-2" />
                 Delete
@@ -65,24 +65,21 @@ export default class ToDoListItem extends Component {
               :
               <div style={{width: "100%"}}>
                 <Button 
-                  modifiers="warning btn-block btn-sm d-lg-none" 
-                  clicked={() => {handleCurrentTitle(todo.title); this.handleEditMode()} }
+                  kind="warning btn-block btn-sm d-lg-none" 
+                  onClick={() => {handleCurrentTitle(todo.title); this.handleEditMode()} }
                 >
                   <Icon iconName="pencil" modifiers="mr-2" />
                   Edit
                 </Button>
                 <Button 
-                  modifiers="warning btn-block d-none d-lg-block" 
-                  clicked={() => {handleCurrentTitle(todo.title); this.handleEditMode()} }
+                  kind="warning btn-block d-none d-lg-block" 
+                  onClick={() => {handleCurrentTitle(todo.title); this.handleEditMode()} }
                 >
                   <Icon iconName="pencil" modifiers="mr-2" />
                   Edit
                 </Button>
               </div>
-      
             }
-          
-       
           </div>
         </div>
       </div>
