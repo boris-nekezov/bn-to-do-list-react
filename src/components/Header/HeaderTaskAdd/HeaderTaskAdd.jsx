@@ -10,7 +10,7 @@ export default class HeaderTaskAdd extends Component {
       <form autoComplete="off" onSubmit={handlePost}>
         <div className="input-group mb-2">
           <div className="input-group-prepend">
-            <Button modifiers="success" type="submit">
+            <Button kind="success" type="submit">
               <Icon iconName="plus" modifiers="mr-sm-2"/>
               <span className="d-none d-sm-inline">Add new task</span>
             </Button>
