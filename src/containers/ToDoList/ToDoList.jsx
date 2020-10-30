@@ -60,7 +60,7 @@ const ToDoList = () => {
           ...todos,
           { ...Data, id: response.data.name }
         ];
-        setTitle("");
+        setTitleAdd("");
         setTodos(todosNew);
       })
     );
