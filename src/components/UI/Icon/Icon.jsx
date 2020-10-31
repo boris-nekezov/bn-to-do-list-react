@@ -1,9 +1,7 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-export default class Icon extends Component {
-	render() {
-		return (
-			<i className={`fa fa-${this.props.iconName} ${this.props.modifiers}`}></i>
-		);
-	}
-}
+const Icon = ({ iconName, modifiers }) => {
+	return <i className={`fa fa-${iconName} ${modifiers}`}></i>;
+};
+
+export default Icon;

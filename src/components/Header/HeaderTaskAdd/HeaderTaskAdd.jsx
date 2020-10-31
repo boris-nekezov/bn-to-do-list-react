@@ -1,12 +1,10 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Button from '../../UI/Button/Button';
 import Icon from '../../UI/Icon/Icon';
 import Input from '../../UI/Input/Input';
 
-export default class HeaderTaskAdd extends Component {
-	render() {
-		const { titleAdd, handleChange, handlePost } = this.props;
-		return;
+const HeaderTaskAdd = ({ titleAdd, handleChange, handlePost }) => {
+	return (
 		<form autoComplete="off" onSubmit={handlePost}>
 			<div className="input-group mb-2">
 				<div className="input-group-prepend">
@@ -19,11 +17,13 @@ export default class HeaderTaskAdd extends Component {
 					type="text"
 					placeholder="Please enter task title!"
 					value={titleAdd}
-					onChange={handleChange}
 					name="titleAdd"
-					autoFocus
+					autofocus
+					onChange={handleChange}
 				/>
 			</div>
-		</form>;
-	}
-}
+		</form>
+	);
+};
+
+export default HeaderTaskAdd;

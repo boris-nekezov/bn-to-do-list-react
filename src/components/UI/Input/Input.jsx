@@ -1,8 +1,7 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-export default class Input extends Component {
-	render() {
-		const { kind, ...other } = this.props;
-		return <input className={`form-control ${kind}`} {...other} />;
-	}
-}
+const Input = ({ kind, ...other }) => {
+	return <input className={`form-control ${kind}`} {...other} />;
+};
+
+export default Input;

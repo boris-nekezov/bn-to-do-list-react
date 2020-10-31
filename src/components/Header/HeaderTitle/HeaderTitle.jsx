@@ -1,5 +1,6 @@
-import React, { Component } from 'react';
+import React from 'react';
 
+<<<<<<< HEAD
 class HeaderTitle extends Component {
 	render() {
 		return (
@@ -9,5 +10,14 @@ class HeaderTitle extends Component {
 		);
 	}
 }
+=======
+const HeaderTitle = ({ title }) => {
+	return (
+		<div className="alert alert-success my-2">
+			<h1 className="text-center">{title}</h1>
+		</div>
+	);
+};
+>>>>>>> v2-functional-components-props
 
 export default HeaderTitle;
