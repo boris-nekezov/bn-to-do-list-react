@@ -1,18 +1,17 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import Header from '../../components/Header/Header';
 import ToDoListItems from '../../components/ToDoListItems/ToDoListItems';
 import instance from '../../firebase/instance';
 import { trackPromise } from 'react-promise-tracker';
 
-class ToDoList extends Component {
-	state = {
-		titleAdd: '',
-		title: '',
-		completed: false,
-		todos: [],
-	};
+const ToDoList = () => {
+	const [titleAdd, setTitleAdd] = useState('');
+	const [title, setTitle] = useState('');
+	const [completed, setCompleted] = useState(false);
+	const [todos, setTodos] = useState([]);
 
-	componentDidMount() {
+	useEffect(() => {
+		console.log('useEffect');
 		trackPromise(
 			instance.get('/todos.json').then(response => {
 				console.log('response', response);
@@ -22,35 +21,34 @@ class ToDoList extends Component {
 					fetchedData.push({ ...response.data[key], id: key });
 				}
 				// set the state of todos to be fetchedData
-				this.setState({
-					todos: fetchedData,
-				});
+				setTodos(fetchedData);
 			})
 		);
-	}
+	}, []);
 
-	handleChange = event => {
+	const handleChange = event => {
 		console.log(`[handleChange]`);
-		this.setState({
-			[event.currentTarget.name]: event.currentTarget.value,
-		});
+		const { value, name } = event.currentTarget;
+		if (name === 'titleAdd') {
+			setTitleAdd(value);
+		}
+		if (name === 'title') {
+			setTitle(value);
+		}
 	};
 
-	// set current title of a task in the input value of the task
-	handleCurrentTitle = titleCurrent => {
+	const handleCurrentTitle = titleCurrent => {
 		console.log(`[handleCurrentTitle]`);
-		this.setState({
-			title: titleCurrent,
-		});
+		setTitle(titleCurrent);
 	};
 
-	handlePost = event => {
+	const handlePost = event => {
 		console.log(`[handlePost]`);
 		event.preventDefault();
 		// add the data we want to post
 		const Data = {
-			title: this.state.titleAdd,
-			completed: this.state.completed,
+			title: titleAdd,
+			completed: completed,
 		};
 
 		trackPromise(
@@ -58,19 +56,14 @@ class ToDoList extends Component {
 			instance.post('/todos.json', Data).then(response => {
 				console.log('response', response);
 				// response.data.name => -MK3VSi5XrApFPQ6oh1C => the key given from firebase
-				const todos = [
-					...this.state.todos,
-					{ ...Data, id: response.data.name },
-				];
-				this.setState({
-					titleAdd: '',
-					todos: todos,
-				});
+				const todosNew = [...todos, { ...Data, id: response.data.name }];
+				setTitleAdd('');
+				setTodos(todosNew);
 			})
 		);
 	};
 
-	handleRemove = id => {
+	const handleRemove = id => {
 		console.log(`[handleRemove]`);
 		console.log('delete', id);
 		trackPromise(
@@ -80,16 +73,14 @@ class ToDoList extends Component {
 			})
 		);
 		// now we have to delete it from the state as well
-		this.setState({
-			todos: this.state.todos.filter(todo => todo.id !== id),
-		});
+		setTodos(todos.filter(todo => todo.id !== id));
 	};
 
-	handleUpdateTitle = id => {
+	const handleUpdateTitle = id => {
 		console.log(`[handleUpdateTitle]`);
 		const Data = {
-			title: this.state.title,
-			completed: this.state.completed,
+			title: title,
+			completed: completed,
 		};
 
 		trackPromise(
@@ -101,17 +92,15 @@ class ToDoList extends Component {
 					for (let key in response.data) {
 						fetchedData.push({ ...response.data[key], id: key });
 					}
-					this.setState({
-						todos: fetchedData,
-						title: '',
-						completed: false,
-					});
+					setTodos(fetchedData);
+					setTitle('');
+					setCompleted(false);
 				});
 			})
 		);
 	};
 
-	handleUpdateCheckbox = (id, titleFromTodo, completedFromTodo) => {
+	const handleUpdateCheckbox = (id, titleFromTodo, completedFromTodo) => {
 		console.log(`[handleUpdateCheckbox]`);
 		const Data = {
 			title: titleFromTodo,
@@ -124,27 +113,24 @@ class ToDoList extends Component {
 		);
 	};
 
-	render() {
-		const { titleAdd, title, todos } = this.state;
-		return (
-			<div className="col-12 col-xl-10">
-				<Header
-					titleAdd={titleAdd}
-					handleChange={this.handleChange}
-					handlePost={this.handlePost}
-				/>
-				<ToDoListItems
-					todos={todos}
-					title={title}
-					handleRemove={this.handleRemove}
-					handleUpdateTitle={this.handleUpdateTitle}
-					handleChange={this.handleChange}
-					handleCurrentTitle={this.handleCurrentTitle}
-					handleUpdateCheckbox={this.handleUpdateCheckbox}
-				/>
-			</div>
-		);
-	}
-}
+	return (
+		<div className="col-12 col-xl-10">
+			<Header
+				titleAdd={titleAdd}
+				handleChange={handleChange}
+				handlePost={handlePost}
+			/>
+			<ToDoListItems
+				todos={todos}
+				title={title}
+				handleRemove={handleRemove}
+				handleUpdateTitle={handleUpdateTitle}
+				handleChange={handleChange}
+				handleCurrentTitle={handleCurrentTitle}
+				handleUpdateCheckbox={handleUpdateCheckbox}
+			/>
+		</div>
+	);
+};
 
 export default ToDoList;
