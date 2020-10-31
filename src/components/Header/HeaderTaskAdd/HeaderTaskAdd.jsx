@@ -19,9 +19,9 @@ export default class HeaderTaskAdd extends Component {
             type="text" 
             placeholder="Please enter task title!"
             value={titleAdd} 
-            handleChange={handleChange}
+            onChange={handleChange}
             name="titleAdd"
-            autofocus
+            autoFocus
           />  
         </div>
       </form>
