@@ -27,8 +27,8 @@ export default class ToDoListItemTitle extends Component {
                       type="text"
                       id={`in${id}`}
                       value={title}
-                      handleChange={handleChange}
                       name="title"
+                      onChange={handleChange}
                       />
                   </div>
                   :
