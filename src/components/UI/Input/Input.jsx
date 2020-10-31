@@ -1,23 +1,26 @@
 import React from 'react';
 
 const Input = ({
-	type,
-	id,
-	placeholder,
-	value,
-	modifier,
-	handleChange,
-	name,
+	kind,
+	// // type,
+	// // id,
+	// // placeholder,
+	// // value,
+	// // modifier,
+	// // handleChange,
+	// name,
+	...other
 }) => {
 	return (
 		<input
-			type={type}
-			id={id}
-			placeholder={placeholder}
-			value={value}
-			className={`form-control ${modifier}`}
-			onChange={handleChange}
-			name={name}
+			className={`form-control ${kind}`}
+			// // type={type}
+			// id={id}
+			// placeholder={placeholder}
+			// value={value}
+			// onChange={handleChange}
+			// name={name}
+			{...other}
 		/>
 	);
 };
