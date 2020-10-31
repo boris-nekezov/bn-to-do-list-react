@@ -18,7 +18,7 @@ const HeaderTaskAdd = ({ titleAdd, handleChange, handlePost }) => {
 					placeholder="Please enter task title!"
 					value={titleAdd}
 					name="titleAdd"
-					autofocus
+					autoFocus
 					onChange={handleChange}
 				/>
 			</div>
