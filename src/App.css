@@ -1,10 +1,10 @@
 .align-items-center {
-  display: flex;
-  align-items: center;
+	display: flex;
+	align-items: center;
 }
 
 @media (max-width: 575.98px) {
-  .input-label {
-    font-size: 16px !important;
-  }
+	.input-label {
+		font-size: 16px !important;
+	}
 }

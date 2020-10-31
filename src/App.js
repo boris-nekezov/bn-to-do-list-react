@@ -4,14 +4,14 @@ import ToDoList from './containers/ToDoList/ToDoList';
 import Loading from './components/UI/Loading/Loading';
 
 function App() {
-  return (
-    <div className="container">
-      <div className="row justify-content-center">
-        <ToDoList />
-        <Loading />
-      </div> 
-    </div>
-  );
+	return (
+		<div className="container">
+			<div className="row justify-content-center">
+				<ToDoList />
+				<Loading />
+			</div>
+		</div>
+	);
 }
 
 export default App;
