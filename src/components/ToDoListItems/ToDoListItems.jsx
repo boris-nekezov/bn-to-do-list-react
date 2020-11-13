@@ -10,7 +10,6 @@ const ToDoListItems = ({
 	handleCurrentTitle,
 	handleUpdateCheckbox,
 }) => {
-	// console.log('todos', todos);
 	return (
 		<div className="alert alert-success">
 			{todos.map(todo => (
