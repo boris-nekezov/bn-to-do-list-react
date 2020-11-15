@@ -1,33 +1,29 @@
 import React, { useState, useEffect } from 'react';
 import Header from '../../components/Header/Header';
 import ToDoListItems from '../../components/ToDoListItems/ToDoListItems';
-import instance from '../../firebase/instance';
-import { trackPromise } from 'react-promise-tracker';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+	fetchTodos,
+	addTodo,
+	removeTodo,
+	updateTodoTitle,
+	updateTodoCheckbox,
+} from '../../actions/todosActions';
 
-const ToDoList = () => {
+const ToDoList = props => {
+	// local state
 	const [titleAdd, setTitleAdd] = useState('');
 	const [title, setTitle] = useState('');
 	const [completed, setCompleted] = useState(false);
-	const [todos, setTodos] = useState([]);
+
+	const dispatch = useDispatch();
+	const todosRedux = useSelector(state => state.todos.todos);
 
 	useEffect(() => {
-		console.log('useEffect');
-		trackPromise(
-			instance.get('/todos.json').then(response => {
-				console.log('response', response);
-				// put the data into array
-				const fetchedData = [];
-				for (let key in response.data) {
-					fetchedData.push({ ...response.data[key], id: key });
-				}
-				// set the state of todos to be fetchedData
-				setTodos(fetchedData);
-			})
-		);
-	}, []);
+		dispatch(fetchTodos());
+	}, [dispatch]);
 
 	const handleChange = event => {
-		console.log(`[handleChange]`);
 		const { value, name } = event.currentTarget;
 		if (name === 'titleAdd') {
 			setTitleAdd(value);
@@ -38,79 +34,43 @@ const ToDoList = () => {
 	};
 
 	const handleCurrentTitle = titleCurrent => {
-		console.log(`[handleCurrentTitle]`);
 		setTitle(titleCurrent);
 	};
 
 	const handlePost = event => {
-		console.log(`[handlePost]`);
 		event.preventDefault();
 		// add the data we want to post
-		const Data = {
+		const data = {
 			title: titleAdd,
 			completed: completed,
 		};
-
-		trackPromise(
-			// push this data to the back-end (post($endpoint) is available in axios)
-			instance.post('/todos.json', Data).then(response => {
-				console.log('response', response);
-				// response.data.name => -MK3VSi5XrApFPQ6oh1C => the key given from firebase
-				const todosNew = [...todos, { ...Data, id: response.data.name }];
-				setTitleAdd('');
-				setTodos(todosNew);
-			})
-		);
+		dispatch(addTodo(data));
+		// reset the value of add text field
+		setTitleAdd('');
 	};
 
 	const handleRemove = id => {
-		console.log(`[handleRemove]`);
-		console.log('delete', id);
-		trackPromise(
-			// here we delete only the item in the db in firebase
-			instance.delete(`/todos/${id}.json`).then(response => {
-				console.log('response', response);
-			})
-		);
-		// now we have to delete it from the state as well
-		setTodos(todos.filter(todo => todo.id !== id));
+		dispatch(removeTodo(id));
 	};
 
-	const handleUpdateTitle = id => {
-		console.log(`[handleUpdateTitle]`);
-		const Data = {
+	const handleUpdateTitle = (id, title) => {
+		const data = {
 			title: title,
-			completed: completed,
+			id: id,
 		};
-
-		trackPromise(
-			instance.put(`todos/${id}.json`, Data).then(response => {
-				console.log('response', response);
-				// update the title text in content after the change
-				instance.get('todos.json').then(response => {
-					const fetchedData = [];
-					for (let key in response.data) {
-						fetchedData.push({ ...response.data[key], id: key });
-					}
-					setTodos(fetchedData);
-					setTitle('');
-					setCompleted(false);
-				});
-			})
-		);
+		dispatch(updateTodoTitle(data));
+		// reset local state title and status
+		setTitle('');
+		setCompleted(false);
 	};
 
 	const handleUpdateCheckbox = (id, titleFromTodo, completedFromTodo) => {
-		console.log(`[handleUpdateCheckbox]`);
-		const Data = {
+		const data = {
 			title: titleFromTodo,
 			completed: !completedFromTodo,
+			id: id,
 		};
-		trackPromise(
-			instance.put(`todos/${id}.json`, Data).then(response => {
-				console.log('response', response);
-			})
-		);
+		dispatch(updateTodoCheckbox(data));
 	};
 
 	return (
@@ -121,7 +81,7 @@ const ToDoList = () => {
 				handlePost={handlePost}
 			/>
 			<ToDoListItems
-				todos={todos}
+				todos={todosRedux}
 				title={title}
 				handleRemove={handleRemove}
 				handleUpdateTitle={handleUpdateTitle}
