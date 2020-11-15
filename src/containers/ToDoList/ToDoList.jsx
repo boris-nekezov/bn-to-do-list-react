@@ -21,7 +21,7 @@ const ToDoList = props => {
 
 	useEffect(() => {
 		dispatch(fetchTodos());
-	}, []);
+	}, [dispatch]);
 
 	const handleChange = event => {
 		const { value, name } = event.currentTarget;

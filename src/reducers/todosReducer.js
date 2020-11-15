@@ -10,7 +10,7 @@ const initialState = {
 	todos: [],
 };
 
-export default (state = initialState, action) => {
+const todosReducer = (state = initialState, action) => {
 	switch (action.type) {
 		case FETCH_TODOS:
 			return {
@@ -45,3 +45,5 @@ export default (state = initialState, action) => {
 			return state;
 	}
 };
+
+export default todosReducer;
