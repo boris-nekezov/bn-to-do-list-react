@@ -1,3 +1,30 @@
+# BN To Do List React project is created for exercise purpose
+
+## Description
+
+This to do list application uses react for front-end and firebase for back-end as well as other packages
+
+### Techonologies used:
+
+- [react](https://reactjs.org/)
+- [create-react-app](https://github.com/facebook/create-react-app)
+- [redux](https://github.com/reduxjs/redux) (**v3**)
+- [react-redux](https://github.com/reduxjs/react-redux) (**v3**)
+- [react-promise-tracker](https://github.com/Lemoncode/react-promise-tracker)
+- [react-loader-spinner](https://github.com/mhnpd/react-loader-spinner)
+- [axios](https://github.com/axios/axios)
+- [firebase](https://firebase.google.com/)
+
+### Application versions
+
+This application has 3 versions available extracted in separated branches:
+
+- `v1-class-components-props`
+- `v2-functional-components-props`
+- `v3-redux-hooks-implementation` final version merged in **(master/develop)**
+
+---
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
