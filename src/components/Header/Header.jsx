@@ -1,6 +1,6 @@
 import React from 'react';
-import HeaderTaskAdd from './HeaderTaskAdd/HeaderTaskAdd';
-import HeaderTitle from './HeaderTitle/HeaderTitle';
+import HeaderTaskAdd from './HeaderTaskAdd';
+import HeaderTitle from './HeaderTitle';
 
 const Header = ({ titleAdd, handleChange, handlePost }) => {
 	return (

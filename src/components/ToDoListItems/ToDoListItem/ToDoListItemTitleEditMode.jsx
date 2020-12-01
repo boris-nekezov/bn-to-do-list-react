@@ -1,8 +1,8 @@
 import React from 'react';
-import Button from './../../../../UI/Button/Button';
-import Icon from '../../../../UI/Icon/Icon';
+import Button from '../../UI/Button';
+import Icon from '../../UI/Icon';
 
-const ToDoListItemEditMode = ({
+const ToDoListItemTitleEditMode = ({
 	handleUpdateTitle,
 	id,
 	title,
@@ -61,4 +61,4 @@ const ToDoListItemEditMode = ({
 	);
 };
 
-export default ToDoListItemEditMode;
+export default ToDoListItemTitleEditMode;

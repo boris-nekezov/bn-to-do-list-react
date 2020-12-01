@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import Button from '../../UI/Button/Button';
+import Button from '../../UI/Button';
 import Checkbox from '../../UI/Checkbox/Checkbox';
-import Icon from '../../UI/Icon/Icon';
-import ToDoListItemTitle from './ToDoListItemTitle/ToDoListItemTitle';
+import Icon from '../../UI/Icon';
+import ToDoListItemTitle from './ToDoListItemTitle';
 
 const ToDoListItem = ({
 	todo,
