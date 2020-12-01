@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import Header from '../../components/Header/Header';
-import ToDoListItems from '../../components/ToDoListItems/ToDoListItems';
+import Header from '../components/Header/Header';
+import ToDoListItems from '../components/ToDoListItems/ToDoListItems';
 import { useDispatch, useSelector } from 'react-redux';
 import {
 	fetchTodos,
@@ -8,7 +8,7 @@ import {
 	removeTodo,
 	updateTodoTitle,
 	updateTodoCheckbox,
-} from '../../actions/todosActions';
+} from '../actions/todosActions';
 
 const ToDoList = props => {
 	// local state

@@ -1,10 +1,9 @@
 # PROJECT PLAN
 
-
 ## 1. Make a screenshot of the app
 
 ![](screenshot.jpg)
-    
+
 ## 2. Separate visually the components
 
 ![](components.jpg)
@@ -50,27 +49,23 @@
 - [`components`]
   - [`Header`]
     - Header.jsx
-    - [`HeaderTitle`]
-      - HeaderTitle.jsx
-    - [`HeaderTaskAdd`]
-      - HeaderTaskAdd.jsx
+    - HeaderTitle.jsx
+    - HeaderTaskAdd.jsx
   - [`ToDoListItems`]
     - ToDoListItems.jsx
     - [`ToDoListItem`]
       - ToDoListItem.jsx
-      - [`ToDoListItemTitle`]
-        - ToDoListItemTitle.jsx
-        - [`ToDoListItemEditMode`]
-          - ToDoListItemEditMode.jsx
+      - ToDoListItemTitle.jsx
+      - ToDoListItemEditMode.jsx
   - [`UI`]
-    - [`Button`]
-      - Button.jsx
-    - [`Icon`]
-      - Icon.jsx
-    - [`Input`]
-      - Input.jsx
     - [`Checkbox`]
       - Checkbox.jsx
+      - Checkbox.css
+    - [`Loading`]
+      - Loading.css
+      - Loading.jsx
+    - Button.jsx
+    - Icon.jsx
+    - Input.jsx
 - [`containers`]
-  - [`ToDoList`]
-    - ToDoList.jsx
+  - ToDoList.jsx

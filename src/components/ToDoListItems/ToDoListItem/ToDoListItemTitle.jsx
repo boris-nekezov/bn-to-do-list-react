@@ -1,6 +1,6 @@
 import React from 'react';
-import Input from '../../../UI/Input/Input';
-import ToDoListItemEditMode from './ToDoListItemEditMode/ToDoListItemEditMode';
+import Input from '../../UI/Input';
+import ToDoListItemTitleEditMode from './ToDoListItemTitleEditMode';
 
 const ToDoListItemTitle = ({
 	id,
@@ -44,7 +44,7 @@ const ToDoListItemTitle = ({
 				</div>
 
 				{isInEditMode && (
-					<ToDoListItemEditMode
+					<ToDoListItemTitleEditMode
 						handleUpdateTitle={handleUpdateTitle}
 						id={id}
 						title={title}
