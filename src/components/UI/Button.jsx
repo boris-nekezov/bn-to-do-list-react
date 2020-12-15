@@ -2,7 +2,7 @@ import React from 'react';
 
 const Button = ({ kind, children, ...other }) => {
 	return (
-		<button className={`btn btn-${kind}`} {...other}>
+		<button {...other} className={`btn btn-${kind}`}>
 			{children}
 		</button>
 	);

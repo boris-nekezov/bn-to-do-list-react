@@ -8,9 +8,7 @@ const Checkbox = ({ id, title, completed, handleUpdateCheckbox }) => {
 			<label
 				htmlFor={`ch${id}`}
 				className="checkbox-label"
-				onClick={() => {
-					handleUpdateCheckbox(id, title, completed);
-				}}
+				onClick={() => handleUpdateCheckbox(id, title, completed)}
 			></label>
 		</div>
 	);
