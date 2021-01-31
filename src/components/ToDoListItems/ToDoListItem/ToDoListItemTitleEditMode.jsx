@@ -1,14 +1,29 @@
 import React from 'react';
 import Button from '../../UI/Button';
 import Icon from '../../UI/Icon';
+import { useDispatch, useSelector } from 'react-redux';
+import { updateTodoTitle } from '../../../actions/todosActions';
 
 const ToDoListItemTitleEditMode = ({
-	handleUpdateTitle,
 	id,
 	title,
 	handleEditMode,
 	handleRemove,
 }) => {
+	const dispatch = useDispatch();
+	const currentTask = useSelector(state =>
+		state.todos.todos.filter(task => task.id === id)
+	);
+	const currentTaskStatus = currentTask[0].completed;
+	const handleUpdateTitle = (id, title) => {
+		const data = {
+			title: title,
+			id: id,
+			completed: currentTaskStatus,
+		};
+		dispatch(updateTodoTitle(data));
+	};
+
 	return (
 		<div>
 			<div className="row">

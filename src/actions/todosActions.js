@@ -52,29 +52,21 @@ export const removeTodo = id => dispatch => {
 };
 
 export const updateTodoTitle = data => dispatch => {
-	// first we get the completed status from the todo with that id
-	instance.get(`todos/${data.id}.json`).then(response => {
-		trackPromise(
-			instance
-				.put(`todos/${data.id}.json`, {
-					...data,
-					completed: response.data.completed, // then we pass it here
-				})
-				.then(response => {
-					// update the title text in content after the change
-					instance.get('todos.json').then(response => {
-						const fetchedData = [];
-						for (let key in response.data) {
-							fetchedData.push({ ...response.data[key], id: key });
-						}
-						dispatch({
-							type: UPDATE_TODO_TITLE,
-							payload: fetchedData,
-						});
-					});
-				})
-		);
-	});
+	trackPromise(
+		instance.put(`todos/${data.id}.json`, data).then(response => {
+			// update the title text in content after the change
+			instance.get('todos.json').then(response => {
+				const fetchedData = [];
+				for (let key in response.data) {
+					fetchedData.push({ ...response.data[key], id: key });
+				}
+				dispatch({
+					type: UPDATE_TODO_TITLE,
+					payload: fetchedData,
+				});
+			});
+		})
+	);
 };
 
 export const updateTodoCheckbox = data => dispatch => {

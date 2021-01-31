@@ -6,7 +6,6 @@ import {
 	fetchTodos,
 	addTodo,
 	removeTodo,
-	updateTodoTitle,
 	updateTodoCheckbox,
 } from '../actions/todosActions';
 
@@ -53,17 +52,6 @@ const ToDoList = props => {
 		dispatch(removeTodo(id));
 	};
 
-	const handleUpdateTitle = (id, title) => {
-		const data = {
-			title: title,
-			id: id,
-		};
-		dispatch(updateTodoTitle(data));
-		// reset local state title and status
-		setTitle('');
-		setCompleted(false);
-	};
-
 	const handleUpdateCheckbox = (id, titleFromTodo, completedFromTodo) => {
 		const data = {
 			title: titleFromTodo,
@@ -84,7 +72,6 @@ const ToDoList = props => {
 				todos={todosRedux}
 				title={title}
 				handleRemove={handleRemove}
-				handleUpdateTitle={handleUpdateTitle}
 				handleChange={handleChange}
 				handleCurrentTitle={handleCurrentTitle}
 				handleUpdateCheckbox={handleUpdateCheckbox}
