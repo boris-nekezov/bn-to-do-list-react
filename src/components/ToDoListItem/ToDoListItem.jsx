@@ -3,18 +3,17 @@ import Button from '../UI/Button';
 import Checkbox from '../UI/Checkbox/Checkbox';
 import Icon from '../UI/Icon';
 import ToDoListItemTitle from './ToDoListItemTitle';
-
+import { removeTodo } from '../../actions/todosActions';
+import { useDispatch } from 'react-redux';
 const ToDoListItem = ({
 	todo,
-	handleRemove,
-	handleUpdateTitle,
 	handleChange,
 	title,
 	handleCurrentTitle,
 	handleUpdateCheckbox,
 }) => {
 	const [isInEditMode, setIsInEditMode] = useState(false);
-
+	const dispatch = useDispatch();
 	const handleEditMode = () => {
 		setIsInEditMode(!isInEditMode);
 	};
@@ -35,19 +34,17 @@ const ToDoListItem = ({
 					id={todo.id}
 					title={title}
 					label={todo.title}
-					handleUpdateTitle={handleUpdateTitle}
 					handleChange={handleChange}
 					handleEditMode={handleEditMode}
 					isInEditMode={isInEditMode}
 					handleCurrentTitle={handleCurrentTitle}
-					handleRemove={handleRemove}
 				/>
 
 				<div className="col-12 col-lg-2 align-items-center">
 					{isInEditMode ? (
 						<Button
 							kind="danger d-none d-lg-block"
-							onClick={() => handleRemove(todo.id)}
+							onClick={() => dispatch(removeTodo(todo.id))}
 						>
 							<Icon iconName="trash-o" modifiers="mr-2" />
 							Delete

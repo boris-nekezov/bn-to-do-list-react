@@ -2,26 +2,23 @@ import React from 'react';
 import Button from '../UI/Button';
 import Icon from '../UI/Icon';
 import { useDispatch, useSelector } from 'react-redux';
-import { updateTodoTitle } from '../../actions/todosActions';
+import { updateTodoTitle, removeTodo } from '../../actions/todosActions';
 
-const ToDoListItemTitleEditMode = ({
-	id,
-	title,
-	handleEditMode,
-	handleRemove,
-}) => {
+const ToDoListItemTitleEditMode = ({ id, title, handleEditMode }) => {
 	const dispatch = useDispatch();
 	const currentTask = useSelector(state =>
-		state.todos.todos.filter(task => task.id === id)
+		state.todosState.todos.filter(task => task.id === id)
 	);
 	const currentTaskStatus = currentTask[0].completed;
+
 	const handleUpdateTitle = (id, title) => {
-		const data = {
-			title: title,
-			id: id,
-			completed: currentTaskStatus,
-		};
-		dispatch(updateTodoTitle(data));
+		dispatch(
+			updateTodoTitle({
+				title: title,
+				id: id,
+				completed: currentTaskStatus,
+			})
+		);
 	};
 
 	return (
@@ -45,7 +42,10 @@ const ToDoListItemTitleEditMode = ({
 						<Button kind="warning" onClick={() => handleEditMode()}>
 							Cancel
 						</Button>
-						<Button kind="danger d-lg-none" onClick={() => handleRemove(id)}>
+						<Button
+							kind="danger d-lg-none"
+							onClick={() => dispatch(removeTodo(id))}
+						>
 							<Icon iconName="trash-o" />
 						</Button>
 					</div>
@@ -66,7 +66,10 @@ const ToDoListItemTitleEditMode = ({
 						<Button kind="warning" onClick={() => handleEditMode()}>
 							Cancel
 						</Button>
-						<Button kind="danger d-lg-none" onClick={() => handleRemove(id)}>
+						<Button
+							kind="danger d-lg-none"
+							onClick={() => dispatch(removeTodo(id))}
+						>
 							<Icon iconName="trash-o" modifiers="mr-2" />
 						</Button>
 					</div>

@@ -5,7 +5,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import {
 	fetchTodos,
 	addTodo,
-	removeTodo,
 	updateTodoCheckbox,
 } from '../actions/todosActions';
 
@@ -13,10 +12,9 @@ const ToDoList = () => {
 	// local state
 	const [titleAdd, setTitleAdd] = useState('');
 	const [title, setTitle] = useState('');
-	const [completed, setCompleted] = useState(false);
 
 	const dispatch = useDispatch();
-	const todosRedux = useSelector(state => state.todos.todos);
+	const todosRedux = useSelector(state => state.todosState.todos);
 
 	useEffect(() => {
 		dispatch(fetchTodos());
@@ -39,26 +37,24 @@ const ToDoList = () => {
 	const handlePost = event => {
 		event.preventDefault();
 		// add the data we want to post
-		const data = {
-			title: titleAdd,
-			completed: completed,
-		};
-		dispatch(addTodo(data));
+		dispatch(
+			addTodo({
+				title: titleAdd,
+				completed: false,
+			})
+		);
 		// reset the value of add text field
 		setTitleAdd('');
 	};
 
-	const handleRemove = id => {
-		dispatch(removeTodo(id));
-	};
-
 	const handleUpdateCheckbox = (id, titleFromTodo, completedFromTodo) => {
-		const data = {
-			title: titleFromTodo,
-			completed: !completedFromTodo,
-			id: id,
-		};
-		dispatch(updateTodoCheckbox(data));
+		dispatch(
+			updateTodoCheckbox({
+				title: titleFromTodo,
+				completed: !completedFromTodo,
+				id: id,
+			})
+		);
 	};
 
 	return (
@@ -74,7 +70,6 @@ const ToDoList = () => {
 						todo={todo}
 						key={todo.id}
 						title={title}
-						handleRemove={handleRemove}
 						handleChange={handleChange}
 						handleCurrentTitle={handleCurrentTitle}
 						handleUpdateCheckbox={handleUpdateCheckbox}
