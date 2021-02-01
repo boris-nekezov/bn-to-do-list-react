@@ -2,11 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Header from '../components/Header/Header';
 import ToDoListItem from '../components/ToDoListItem/ToDoListItem';
 import { useDispatch, useSelector } from 'react-redux';
-import {
-	fetchTodos,
-	addTodo,
-	updateTodoCheckbox,
-} from '../actions/todosActions';
+import { fetchTodos, addTodo } from '../actions/todosActions';
 
 const ToDoList = () => {
 	// local state
@@ -15,7 +11,6 @@ const ToDoList = () => {
 
 	const dispatch = useDispatch();
 	const todosRedux = useSelector(state => state.todosState.todos);
-
 	useEffect(() => {
 		dispatch(fetchTodos());
 	}, [dispatch]);
@@ -47,16 +42,6 @@ const ToDoList = () => {
 		setTitleAdd('');
 	};
 
-	const handleUpdateCheckbox = (id, titleFromTodo, completedFromTodo) => {
-		dispatch(
-			updateTodoCheckbox({
-				title: titleFromTodo,
-				completed: !completedFromTodo,
-				id: id,
-			})
-		);
-	};
-
 	return (
 		<div className="col-12 col-xl-10">
 			<Header
@@ -72,7 +57,6 @@ const ToDoList = () => {
 						title={title}
 						handleChange={handleChange}
 						handleCurrentTitle={handleCurrentTitle}
-						handleUpdateCheckbox={handleUpdateCheckbox}
 					/>
 				))}
 			</div>

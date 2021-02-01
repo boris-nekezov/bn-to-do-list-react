@@ -3,21 +3,15 @@ import Button from '../UI/Button';
 import Checkbox from '../UI/Checkbox/Checkbox';
 import Icon from '../UI/Icon';
 import ToDoListItemTitle from './ToDoListItemTitle';
-import { removeTodo } from '../../actions/todosActions';
+import { removeTodo, updateTodoCheckbox } from '../../actions/todosActions';
 import { useDispatch } from 'react-redux';
-const ToDoListItem = ({
-	todo,
-	handleChange,
-	title,
-	handleCurrentTitle,
-	handleUpdateCheckbox,
-}) => {
+
+const ToDoListItem = ({ todo, handleChange, title, handleCurrentTitle }) => {
 	const [isInEditMode, setIsInEditMode] = useState(false);
 	const dispatch = useDispatch();
 	const handleEditMode = () => {
 		setIsInEditMode(!isInEditMode);
 	};
-
 	return (
 		<div className="jumbotron mb-2 py-3 px-3">
 			<div className="row">
@@ -26,7 +20,15 @@ const ToDoListItem = ({
 						id={todo.id}
 						title={todo.title}
 						completed={todo.completed}
-						handleUpdateCheckbox={handleUpdateCheckbox}
+						onClick={() =>
+							dispatch(
+								updateTodoCheckbox({
+									title: todo.title,
+									completed: !todo.completed,
+									id: todo.id,
+								})
+							)
+						}
 					/>
 				</div>
 
