@@ -1,8 +1,8 @@
 import React from 'react';
-import Button from '../../UI/Button';
-import Icon from '../../UI/Icon';
+import Button from '../UI/Button';
+import Icon from '../UI/Icon';
 import { useDispatch, useSelector } from 'react-redux';
-import { updateTodoTitle } from '../../../actions/todosActions';
+import { updateTodoTitle } from '../../actions/todosActions';
 
 const ToDoListItemTitleEditMode = ({
 	id,

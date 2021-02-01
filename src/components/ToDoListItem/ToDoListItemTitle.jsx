@@ -1,5 +1,5 @@
 import React from 'react';
-import Input from '../../UI/Input';
+import Input from '../UI/Input';
 import ToDoListItemTitleEditMode from './ToDoListItemTitleEditMode';
 
 const ToDoListItemTitle = ({

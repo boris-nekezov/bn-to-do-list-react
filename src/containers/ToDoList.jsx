@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Header from '../components/Header/Header';
-import ToDoListItems from '../components/ToDoListItems/ToDoListItems';
+import ToDoListItem from '../components/ToDoListItem/ToDoListItem';
 import { useDispatch, useSelector } from 'react-redux';
 import {
 	fetchTodos,
@@ -9,7 +9,7 @@ import {
 	updateTodoCheckbox,
 } from '../actions/todosActions';
 
-const ToDoList = props => {
+const ToDoList = () => {
 	// local state
 	const [titleAdd, setTitleAdd] = useState('');
 	const [title, setTitle] = useState('');
@@ -68,14 +68,19 @@ const ToDoList = props => {
 				handleChange={handleChange}
 				handlePost={handlePost}
 			/>
-			<ToDoListItems
-				todos={todosRedux}
-				title={title}
-				handleRemove={handleRemove}
-				handleChange={handleChange}
-				handleCurrentTitle={handleCurrentTitle}
-				handleUpdateCheckbox={handleUpdateCheckbox}
-			/>
+			<div className="alert alert-success">
+				{todosRedux.map(todo => (
+					<ToDoListItem
+						todo={todo}
+						key={todo.id}
+						title={title}
+						handleRemove={handleRemove}
+						handleChange={handleChange}
+						handleCurrentTitle={handleCurrentTitle}
+						handleUpdateCheckbox={handleUpdateCheckbox}
+					/>
+				))}
+			</div>
 		</div>
 	);
 };
