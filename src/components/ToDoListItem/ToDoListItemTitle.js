@@ -2,7 +2,7 @@ import React from 'react';
 import Input from '../UI/Input';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { updateTodoTitle, removeTodo } from '../../actions/todosActions';
+import { updateTodoTitle } from '../../actions/todosActions';
 import ToDoListItemEditMobile from './ToDoListItemEditMobile';
 
 const ToDoListItemTitle = ({
