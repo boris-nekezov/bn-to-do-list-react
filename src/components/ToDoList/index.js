@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import Header from '../components/Header';
-import ToDoListItem from '../components/ToDoListItem/ToDoListItem';
+import Header from '../Header';
+import ToDoListItem from '../ToDoListItem/ToDoListItem';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchTodos, addTodo } from '../actions/todosActions';
+import { fetchTodos, addTodo } from '../../actions/todosActions';
 
 const ToDoList = () => {
 	// local state

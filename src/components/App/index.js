@@ -1,6 +1,6 @@
 import React from 'react';
 import './index.css';
-import ToDoList from '../../containers/ToDoList';
+import ToDoList from '../ToDoList';
 import Loading from '../UI/Loading/Loading';
 
 function App() {
