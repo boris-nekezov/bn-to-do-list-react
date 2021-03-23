@@ -1,11 +1,12 @@
 import React from 'react';
 import HeaderTaskAdd from './HeaderTaskAdd';
-import HeaderTitle from './HeaderTitle';
 
 const Header = ({ titleAdd, handleChange, handlePost }) => {
 	return (
 		<div>
-			<HeaderTitle title="BN To Do List" />
+			<div className="alert alert-success my-2">
+				<h1 className="text-center">BN To Do List</h1>
+			</div>
 			<HeaderTaskAdd
 				titleAdd={titleAdd}
 				handleChange={handleChange}
