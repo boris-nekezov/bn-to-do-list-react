@@ -1,7 +1,7 @@
 import React from 'react';
-import './App.css';
-import ToDoList from './containers/ToDoList';
-import Loading from './components/UI/Loading/Loading';
+import './index.css';
+import ToDoList from '../../containers/ToDoList';
+import Loading from '../UI/Loading/Loading';
 
 function App() {
 	return (
