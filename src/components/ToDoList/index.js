@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Header from '../Header';
-import ToDoListItem from '../ToDoListItem/ToDoListItem';
+import ToDoListItem from '../ToDoListItem';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchTodos, addTodo } from '../../actions/todosActions';
 
