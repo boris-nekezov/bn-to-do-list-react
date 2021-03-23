@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
-import Button from '../UI/Button';
 import Checkbox from '../UI/Checkbox/Checkbox';
-import Icon from '../UI/Icon';
 import ToDoListItemTitle from './ToDoListItemTitle';
-import { removeTodo, updateTodoCheckbox } from '../../actions/todosActions';
+import { updateTodoCheckbox } from '../../actions/todosActions';
 import { useDispatch } from 'react-redux';
+import ToDoListItemEditDesktop from './ToDoListItemEditDesktop';
 
 const ToDoListItem = ({ todo, handleChange, title, handleCurrentTitle }) => {
 	const [isInEditMode, setIsInEditMode] = useState(false);
@@ -42,40 +41,13 @@ const ToDoListItem = ({ todo, handleChange, title, handleCurrentTitle }) => {
 					handleCurrentTitle={handleCurrentTitle}
 				/>
 
-				<div className="col-12 col-lg-2 align-items-center">
-					{isInEditMode ? (
-						<Button
-							kind="danger d-none d-lg-block"
-							onClick={() => dispatch(removeTodo(todo.id))}
-						>
-							<Icon iconName="trash-o" modifiers="mr-2" />
-							Delete
-						</Button>
-					) : (
-						<div style={{ width: '100%' }}>
-							<Button
-								kind="warning btn-block btn-sm d-lg-none"
-								onClick={() => {
-									handleCurrentTitle(todo.title);
-									handleEditMode();
-								}}
-							>
-								<Icon iconName="pencil" modifiers="mr-2" />
-								Edit
-							</Button>
-							<Button
-								kind="warning btn-block d-none d-lg-block"
-								onClick={() => {
-									handleCurrentTitle(todo.title);
-									handleEditMode();
-								}}
-							>
-								<Icon iconName="pencil" modifiers="mr-2" />
-								Edit
-							</Button>
-						</div>
-					)}
-				</div>
+				<ToDoListItemEditDesktop
+					isInEditMode={isInEditMode}
+					id={todo.id}
+					title={todo.title}
+					handleCurrentTitle={handleCurrentTitle}
+					handleEditMode={handleEditMode}
+				/>
 			</div>
 		</div>
 	);
