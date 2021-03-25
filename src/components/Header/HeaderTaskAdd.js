@@ -1,6 +1,6 @@
 import React from 'react';
 import Button from '../Button';
-import Icon from '../UI/Icon';
+import Icon from '../Icon';
 import Input from '../UI/Input';
 
 const HeaderTaskAdd = ({ titleAdd, handleChange, handlePost }) => {
