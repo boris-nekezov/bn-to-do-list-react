@@ -1,7 +1,7 @@
 import React from 'react';
 import './index.css';
 import ToDoList from '../ToDoList';
-import Loading from '../UI/Loading/Loading';
+import Loading from '../Loading';
 
 function App() {
 	return (

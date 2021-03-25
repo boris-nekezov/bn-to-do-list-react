@@ -1,7 +1,7 @@
 import React from 'react';
 import Loader from 'react-loader-spinner';
 import { usePromiseTracker } from 'react-promise-tracker';
-import './Loading.css';
+import './style.css';
 
 const Loading = () => {
 	const { promiseInProgress } = usePromiseTracker();
