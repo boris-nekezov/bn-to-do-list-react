@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Checkbox from '../UI/Checkbox/Checkbox';
+import Checkbox from '../Checkbox';
 import ToDoListItemTitle from './ToDoListItemTitle';
 import { updateTodoCheckbox } from '../../actions/todosActions';
 import { useDispatch } from 'react-redux';
