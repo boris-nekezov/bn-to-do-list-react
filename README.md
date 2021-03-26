@@ -2,7 +2,11 @@
 
 ## Description
 
-This to do list application uses react for front-end and firebase for back-end as well as other packages
+This to do list application that uses react for front-end and firebase for back-end. It's a pet project where I can play around with react.
+
+## Link - https://bn-to-do-list-react.netlify.app/
+
+[![bn-to-do-list-react.jpg](https://i.postimg.cc/qgf124Zb/bn-to-do-list-react.jpg)](https://postimg.cc/q6LcTVry)
 
 ### Techonologies used:
 
@@ -21,7 +25,9 @@ This application has 3 versions available extracted in separated branches:
 
 - `v1-class-components-props`
 - `v2-functional-components-props`
-- `v3-redux-hooks-implementation` final version merged in **(master/develop)**
+- `v3-redux-hooks-implementation`
+- `v4-redux-hooks-refactored`
+- `v5-major-update-codebase-structure` final version merged in **(master/develop/production)**
 
 ---
 
